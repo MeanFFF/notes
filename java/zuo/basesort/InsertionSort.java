@@ -1,4 +1,4 @@
-package zuo;
+package zuo.basesort;
 
 import java.util.Arrays;
 
@@ -22,6 +22,7 @@ public class InsertionSort {
         0~N-1 上实现有序
          */
         for (int i = 1; i <= arr.length - 1; i++) {
+            // 从后往前比，保证前面有序
             for (int k = i; k > 0 && arr[k] < arr[k - 1]; k --) {
                 /*
                 看arr[k]是否比前面的值更小，如果更小则交换，使其有序

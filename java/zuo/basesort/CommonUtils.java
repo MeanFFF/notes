@@ -1,4 +1,4 @@
-package zuo;
+package zuo.basesort;
 
 /**
  * @author gangping.liu

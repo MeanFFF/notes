@@ -1,4 +1,4 @@
-package zuo;
+package zuo.basesort;
 
 import java.util.Arrays;
 
@@ -20,6 +20,7 @@ public class BubbleSort {
         0~1 上，将最大的交换到最右边（1）
          */
         for (int i = arr.length - 1; i > 0; i--) {
+            // 内循环的范围是：0～i；最小是0～1
             for (int k = 0; k < i; k++) {
                 /*
                 0 1上，将最大的交换到最右边（1）
