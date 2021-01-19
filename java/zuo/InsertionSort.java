@@ -3,30 +3,36 @@ package zuo;
 import java.util.Arrays;
 
 /**
- * @author gangpign.liu
- * @date 20210115
+ * @author gangping.liu
+ * @date 20210119
  */
-public class SelectionSort {
+public class InsertionSort {
 
-    public static void selectionSort(int[] arr) {
+    public static void insertionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
+
         /*
-        找出0~N-1中最小值，与0位置的数交换
-        找出1~N-1中最小值，与1位置的数交换
-        找出2~N-1中最小值，与2位置的数交换
+        0~0 上实现有序
+        0~1 上实现有序
+        0~2 上实现有序
+        0~3 上实现有序
         ...
-        找出N-2~N-1中最小值，与N-2位置的数交换
+        0~N-1 上实现有序
          */
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIdx]) {
-                    minIdx = j;
-                }
+        for (int i = 1; i <= arr.length - 1; i++) {
+            for (int k = i; k > 0 && arr[k] < arr[k - 1]; k --) {
+                /*
+                看arr[k]是否比前面的值更小，如果更小则交换，使其有序
+                再arr[k-1]看前面
+
+                排队时，看前面是不是有比自己更高的人，有则交换
+
+                因为前面已经是有序的了，所以arr[k] >= arr[k-1]之后 就可以不用比较了
+                 */
+                CommonUtils.swap(arr, k, k - 1);
             }
-            CommonUtils.swap(arr, i, minIdx);
         }
     }
 
@@ -38,7 +44,7 @@ public class SelectionSort {
         for (int k = 0; k < testTimes; k++) {
             int[] arr1 = CommonUtils.generateRandomArray(maxSize, maxValue);
             int[] arr2 = CommonUtils.copyOf(arr1);
-            selectionSort(arr1);
+            insertionSort(arr1);
             Arrays.sort(arr2);
             if (!CommonUtils.isEqual(arr1, arr2)) {
                 System.out.println("Oh no!");
